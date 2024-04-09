@@ -1,5 +1,7 @@
-name: keepalive
+name: Keep Alive
 description: keepalive
+icon: battery-charging
+color: orange
 runs:
   using: composite
   steps:
