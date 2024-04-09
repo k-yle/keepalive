@@ -1,0 +1,23 @@
+name: keepalive
+description: keepalive
+runs:
+  using: composite
+  steps:
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: touch
+      shell: bash
+      run: |
+        mkdir tmp
+        cd tmp
+        touch $(echo -e "\U$(printf '%08x' $((RANDOM % 616 + 0x1F300)))")
+
+    - name: push to branch 
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: tmp
+        single-commit: true
+        commit-message: keepalive
+        branch: keepalive
+
